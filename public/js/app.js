@@ -3,6 +3,9 @@
 
   // Variables of inputs
   var commands = $('#commands')
+  var results = $('#results')
+  var containerResults = results.parent('.well')
+
 
   var functions = {
     changeFile: function () {
@@ -49,12 +52,45 @@
       }
 
       reader.readAsText(file, 'utf-8')
+    },
+    submit: function (event) {
+      event.preventDefault()
+
+      var form = $(this)
+
+      containerResults.fadeOut()
+
+      // Clear previous results
+      results.empty()
+      $.ajax({
+        url: form.prop('action'),
+        method: 'POST',
+        dataType: 'json',
+        data: form.serialize(),
+        success: function (response) {
+
+          if (response.success === true) {
+            response.data.forEach(function (result) {
+              results.append(
+                $('<li>', {
+                  text: result
+                })
+              )
+
+              containerResults.fadeIn()
+            })
+          }
+        }
+      })
     }
   }
 
   // Set global event for all input files
-  $(document).on('change', ':file', functions.changeFile) // eslint-disable-line
+  $(document).on('change', ':file', functions.changeFile)
 
   // Event used to set the file in the disabled input
-  $(':file').on('fileselect', functions.loadFile) // eslint-disable-line
+  $(':file').on('fileselect', functions.loadFile)
+
+  // Handle event for submit commands form
+  $('#commands-form').on('submit', functions.submit)
 })()

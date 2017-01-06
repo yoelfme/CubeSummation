@@ -2,7 +2,7 @@
     <h3>Comandos</h3>
     @include('partials.inputs.file')
 
-    <form id="commands-form" action="" method="POST">
+    <form id="commands-form" action="{{ url('/api/matrix/resolve') }}" method="POST">
         {!! csrf_field() !!}
 
         @include('partials.inputs.textarea', ['name' => 'commands', 'placeholder' => 'O escriba los comandos directamente'])
