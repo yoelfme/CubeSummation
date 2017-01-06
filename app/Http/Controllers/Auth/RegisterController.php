@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace CubeSummation\Http\Controllers\Auth;
 
-use App\User;
+use CubeSummation\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use CubeSummation\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
