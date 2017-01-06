@@ -2,6 +2,17 @@
 
 This repository contains solve of Cube Summation with Laravel from challenge in [Hacker Rank](https://www.hackerrank.com/challenges/cube-summation).
 
+## Environment Setup
+
+- Clone project in your local
+- Install [PHP](http://php.net/manual/es/install.php) and [Composer](https://getcomposer.org/download/)
+- Run the commands:
+	```
+	php artisan serve
+	```
+
+	The project will be running at [localhost:8000](localhost:8000)
+
 ## Architecture
 
 ### Client Layer
